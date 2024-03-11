@@ -1,8 +1,11 @@
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
+    background-image: url("assets/background.jpg");
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
