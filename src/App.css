@@ -1,8 +1,20 @@
+#root {
+  --bg-color-dark: rgba(0,0,0,0.7);
+  --bg-color-light: rgba(255,255,255,0.8);
+  --font-family: Arial;
+  --font-weight: 200;
+}
+
 html {
     font-size: 62.5%;
-    background-image: url("assets/background.jpg");
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url('assets/bg_img.png');
+  background-size: 100% 100%;
 }
 
 * {
