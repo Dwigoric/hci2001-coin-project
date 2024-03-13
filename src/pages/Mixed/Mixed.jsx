@@ -69,7 +69,7 @@ function Mixed() {
                     setActive={() => changeActiveSubmenu(tabIndex, i)}
                     isActive={i === submenuIndex && !sub.disabled}
                     isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
-                    alignText="self"
+                    alignText="left"
                 />
             )
         })
