@@ -6,15 +6,16 @@ ButtonTab.propTypes = {
     buttonId: PropTypes.number,
     text: PropTypes.string,
     setActive: PropTypes.func,
-    isActive: PropTypes.bool
+    isActive: PropTypes.bool,
+    isDisabled: PropTypes.bool
 }
 
-function ButtonTab({ buttonId, text, setActive, isActive }) {
+function ButtonTab({ buttonId, text, setActive, isActive, isDisabled = false }) {
 
     return (
         <button
             className={`${styles.button} ${isActive ? styles.active : ''}`}
-            onClick={() => setActive(buttonId)}
+            onClick={isDisabled ? () => null : () => setActive(buttonId)}
         >
             <span className={styles.label}>{text}</span>
         </button>
