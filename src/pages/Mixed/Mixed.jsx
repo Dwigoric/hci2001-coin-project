@@ -34,6 +34,7 @@ function Mixed() {
                 setActive={() => changeActiveSubmenu(0, i)}
                 isActive={i === 0 && !sub.disabled}
                 isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
+                alignText="left"
             />
         )
     })
@@ -68,6 +69,7 @@ function Mixed() {
                     setActive={() => changeActiveSubmenu(tabIndex, i)}
                     isActive={i === submenuIndex && !sub.disabled}
                     isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
+                    alignText="self"
                 />
             )
         })
