@@ -1,8 +1,24 @@
+/* The ChaletComprime-CologneSixty is the font used by GTA V for the title on its menu. */
+@font-face {
+    font-family: 'ChaletComprime-CologneSixty';
+    src: url('assets/fonts/ChaletComprimeCologneSixty.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* The ChaletLondon-NineteenSixty is the font used by GTA V for the menu options. */
+@font-face {
+    font-family: 'ChaletLondon-NineteenSixty';
+    src: url('assets/fonts/ChaletLondonNineteenSixty.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #root {
-  --bg-color-dark: rgba(0,0,0,0.7);
-  --bg-color-light: rgba(255,255,255,0.8);
-  --font-family: Arial;
-  --font-weight: 200;
+    --bg-color-dark: rgba(0, 0, 0, 0.7);
+    --bg-color-light: rgba(255, 255, 255, 0.8);
+    --font-family: Arial;
+    --font-weight: 200;
 }
 
 html {
@@ -10,11 +26,10 @@ html {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-
-  background-image: url('assets/bg_img.png');
-  background-size: 100% 100%;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('assets/bg_img.png');
+    background-size: 100% 100%;
 }
 
 * {
