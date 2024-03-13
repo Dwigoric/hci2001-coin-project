@@ -6,13 +6,12 @@
     align-items: center;
     font-family: var(--font-family);
     font-size: 2.5rem;
+}
 
-    h1 {
-        font-family: ChaletComprime-CologneSixty, sans-serif;
-        color: whitesmoke;
-        text-shadow: 2px 2px 0 var(--bg-color-dark);
-
-    }
+.profilePanel h1 {
+    font-family: ChaletComprime-CologneSixty, sans-serif;
+    color: whitesmoke;
+    text-shadow: 2px 2px 0 var(--bg-color-dark);
 }
 
 .userInfo {
@@ -41,9 +40,9 @@
     justify-content: center;
     align-items: center;
     margin-left: 10px;
+}
 
-    img {
-        width: 50px;
-        height: 50px;
-    }
+.userImage img {
+    width: 50px;
+    height: 50px;
 }
