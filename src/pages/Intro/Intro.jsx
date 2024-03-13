@@ -78,6 +78,11 @@ function Intro() {
                     Additionally, this website does not use any cookie nor does it connect to any
                     external server.
                 </p>
+                <p></p>
+                <p>
+                    <a target="_blank" href="https://icons8.com/icon/c7wDY2TRDZHz/gta-5">GTA 5</a> icon by <a
+                    target="_blank" href="https://icons8.com">Icons8</a>
+                </p>
             </div>
         </div>
     )
