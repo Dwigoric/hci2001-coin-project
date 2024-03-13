@@ -1,75 +1,69 @@
+import Tabs from './tabs.jsx'
+
 const settings = [
     {
-        name: 'MAP',
-        submenu: [],
+        name: Tabs.ONLINE,
+        submenu: []
     },
     {
-        name: 'BRIEF',
-        submenu: [],
+        name: Tabs.FRIENDS,
+        submenu: []
     },
     {
-        name: 'STATS',
-        submenu: [],
-    },
-    {
-        name: 'SETTINGS',
+        name: Tabs.SETTINGS,
         submenu: [
             {
-                name: 'Gamepad',
+                name: 'Gamepad'
             },
             {
                 name: 'Keyboard / Mouse',
                 options: [
                     {
                         name: 'Mouse Input Method',
-                        type: 'enum',
+                        type: 'enum'
                     },
                     {
                         name: 'Mouse Look Sensitivity',
-                        type: 'slider',
-                    },
-                ],
+                        type: 'slider'
+                    }
+                ]
             },
             {
-                name: 'Key Bindings',
+                name: 'Key Bindings'
             },
             {
-                name: 'Audio',
+                name: 'Audio'
             },
             {
-                name: 'Camera',
+                name: 'Camera'
             },
             {
-                name: 'Display',
+                name: 'Display'
             },
             {
-                name: 'Graphics',
+                name: 'Graphics'
             },
             {
-                name: 'Advanced Graphics',
+                name: 'Advanced Graphics'
             },
             {
-                name: 'Voice Chat',
+                name: 'Voice Chat'
             },
             {
-                name: 'Notifications',
+                name: 'Notifications'
             },
             {
-                name: 'Rockstar Editor',
+                name: 'Rockstar Editor'
             },
             {
-                name: 'Saving And Startup',
-            },
-        ],
+                name: 'Saving And Startup'
+            }
+        ]
     },
     {
-        name: 'GAME',
-        submenu: [],
-    },
-    {
-        name: 'ONLINE',
-        submenu: [],
-    },
-];
+        name: Tabs.STATS,
+        submenu: []
+    }
+]
 
-export default settings;
+export default settings
