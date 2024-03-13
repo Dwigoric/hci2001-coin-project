@@ -5,6 +5,10 @@ import settings from '../../util/options';
 
 import ButtonMain from '../../components/ButtonMain/ButtonMain';
 import ButtonSub from '../../components/ButtonSub/ButtonSub';
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function Horizontal() {
      // [currently selected main setting, currently selected subsetting]
@@ -23,9 +27,13 @@ function Horizontal() {
 
         setOptions(currSub.options);
     }, [selectionState])
-    function showSubMenu(){
-        
-    }
+    const carouselSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      };
     return (
         <section className={styles.settingsBody}>
             <section className={styles.sidebar}>
@@ -54,10 +62,14 @@ function Horizontal() {
             </section>
 
                 {selectionState[0] && (
-                <section className={styles.submenu}>
+              
+                    <Slider
+                    {...carouselSettings}
+                    >
                     {settings
                     .find((setting) => setting.name === selectionState[0])
                     .submenu.map(({ name }, index) => (
+                        <div class="slider_div" >
                         <ButtonSub
                         key={index}
                         selectionState={selectionState}
@@ -65,8 +77,9 @@ function Horizontal() {
                         state={selectionState[1] === name ? "active" : "inactive"}
                         text={name}
                         />
+                        </div>
                     ))}
-                </section>
+                    </Slider>
             )}
             
             
