@@ -32,7 +32,7 @@ function Mixed() {
                 buttonId={i}
                 text={sub.name}
                 setActive={() => changeActiveSubmenu(0, i)}
-                isActive={i === 0}
+                isActive={i === 0 && !sub.disabled}
                 isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
             />
         )
@@ -66,7 +66,7 @@ function Mixed() {
                     buttonId={i}
                     text={sub.name}
                     setActive={() => changeActiveSubmenu(tabIndex, i)}
-                    isActive={i === submenuIndex}
+                    isActive={i === submenuIndex && !sub.disabled}
                     isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
                 />
             )
