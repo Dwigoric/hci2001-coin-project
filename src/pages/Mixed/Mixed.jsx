@@ -3,7 +3,7 @@ function Mixed() {
         <>
             <p>Mixed</p>
         </>
-    );
+    )
 }
 
-export default Mixed;
+export default Mixed

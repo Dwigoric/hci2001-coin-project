@@ -1,4 +1,5 @@
 import styles from './Intro.module.css'
+import { useNavigate } from 'react-router-dom'
 
 function requestFullScreen() {
     const elem = document.documentElement
@@ -10,6 +11,8 @@ function requestFullScreen() {
 }
 
 function Intro() {
+    const navigate = useNavigate()
+
     return (
         <div className={styles.introPage}>
             <h2>
@@ -52,13 +55,13 @@ function Intro() {
                 Click the appropriate button below to begin.
                 <div className={styles.taskButtonList}>
                     <button>
-                        <a href="/horizontal">Horizontal</a>
+                        <a onClick={() => navigate('/horizontal')}>Horizontal</a>
                     </button>
                     <button>
-                        <a href="/vertical">Vertical</a>
+                        <a onClick={() => navigate('/vertical')}>Vertical</a>
                     </button>
                     <button>
-                        <a href="/mixed">Mixed</a>
+                        <a onClick={() => navigate('/mixed')}>Mixed</a>
                     </button>
                 </div>
             </div>
