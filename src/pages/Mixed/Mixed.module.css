@@ -53,4 +53,5 @@
     justify-content: flex-start;
     align-items: center;
     background-color: var(--bg-color-dark);
+    padding: 0 10px;
 }

@@ -7,6 +7,7 @@ import styles from './Mixed.module.css'
 // Components
 import ProfilePanel from '../../components/ProfilePanel/ProfilePanel.jsx'
 import ButtonTab from '../../components/ButtonTab/ButtonTab.jsx'
+import SettingItem from '../../components/SettingItem/SettingItem.jsx'
 
 // Utils
 import Tabs from '../../util/tabs.jsx'
@@ -39,8 +40,21 @@ function Mixed() {
         )
     })
 
+    const newSettingItems = (settings[0].submenu[0].options || []).map((setting, i) => {
+        return (
+            <SettingItem
+                key={`${settings[0].name}-${settings[0].submenu[0].name}-${i}`}
+                text={setting.name}
+                value={setting.value}
+                type={setting.type}
+                options={setting.options}
+            />
+        )
+    })
+
     const [firstLevelButtons, setFirstLevelButtons] = useState(newButtons)
     const [submenuButtons, setSubmenuButtons] = useState(newSubmenu)
+    const [settingItems, setSettingItems] = useState(newSettingItems)
 
     function changeActiveTab(index) {
         const buttons = Object.keys(Tabs).map((tab, i) => {
@@ -74,6 +88,17 @@ function Mixed() {
             )
         })
         setSubmenuButtons(buttons)
+        setSettingItems((tab.submenu[submenuIndex].options || []).map((setting, i) => {
+            return (
+                <SettingItem
+                    key={`${tab.name}-${tab.submenu[submenuIndex].name}-${i}`}
+                    text={setting.name}
+                    value={setting.value}
+                    type={setting.type}
+                    options={setting.options}
+                />
+            )
+        }))
     }
 
     return (
@@ -89,6 +114,7 @@ function Mixed() {
                         {submenuButtons}
                     </div>
                     <div className={styles.settingsThemselves}>
+                        {settingItems}
                     </div>
                 </div>
             </div>
