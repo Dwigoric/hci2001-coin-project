@@ -1,6 +1,8 @@
 import styles from './Vertical.module.css'
 
 import { useEffect, useState } from 'react'
+import { Slider } from '@mui/material';
+
 import settings from '../../util/options';
 
 import ButtonMain from '../../components/ButtonMain/ButtonMain';
@@ -21,7 +23,7 @@ function Vertical() {
         let currSub = currMain.submenu.find(sub => sub.name == selectionState[1])
         if (!currSub) return
 
-        setOptions(currSub.options);
+        setOptions(currSub.items);
     }, [selectionState])
 
     return (
@@ -83,7 +85,11 @@ function Vertical() {
                     options.map(({ name, type }, index) => (
                         <div className={styles.option} key={index}>
                             <span>{name}</span>
-                            <span>{type}</span>
+
+                            {type == 'slider'
+                                ? <Slider size='medium'/>
+                                : <span>{type}</span>
+                            }
                         </div>
                     ))}
             </section>
