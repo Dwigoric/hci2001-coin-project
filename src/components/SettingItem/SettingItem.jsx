@@ -37,8 +37,11 @@ function SettingItem({ text, value, type, options = [], onSwipe = () => null }) 
     if (typeof value !== 'undefined') {
         // Move the selected value to the first index
         const index = options.indexOf(value)
-        options.splice(index, 1)
-        options.unshift(value)
+        // Only continue if the value is in the options array
+        if (index !== -1) {
+            options.splice(index, 1)
+            options.unshift(value)
+        }
     }
 
     const modifier = type === 'enum' ? (
