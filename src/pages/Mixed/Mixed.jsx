@@ -7,11 +7,11 @@ import styles from './Mixed.module.css'
 // Components
 import ProfilePanel from '../../components/ProfilePanel/ProfilePanel.jsx'
 import ButtonTab from '../../components/ButtonTab/ButtonTab.jsx'
-import SettingItem from '../../components/SettingItem/SettingItem.jsx'
 
 // Utils
 import Tabs from '../../util/tabs.jsx'
 import settings from '../../util/options.jsx'
+import settingItemsBuilder from '../../util/builders/settingItems.jsx'
 
 function Mixed() {
     function firstLevelButtonBuilder(index) {
@@ -40,21 +40,6 @@ function Mixed() {
                     isActive={i === submenuIndex && !sub.disabled}
                     isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
                     alignText="left"
-                />
-            )
-        })
-    }
-
-    function settingItemsBuilder(tabIndex, submenuIndex) {
-        const tab = settings[tabIndex]
-        return (tab.submenu[submenuIndex].options || []).map((setting, i) => {
-            return (
-                <SettingItem
-                    key={`${tab.name}-${tab.submenu[submenuIndex].name}-${i}`}
-                    text={setting.name}
-                    value={setting.value}
-                    type={setting.type}
-                    options={setting.options}
                 />
             )
         })
