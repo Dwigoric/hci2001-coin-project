@@ -14,50 +14,8 @@ import Tabs from '../../util/tabs.jsx'
 import settings from '../../util/options.jsx'
 
 function Mixed() {
-    const newButtons = Object.keys(Tabs).map((tab, i) => {
-        return (
-            <ButtonTab
-                key={tab}
-                buttonId={i}
-                text={tab}
-                setActive={changeActiveTab}
-                isActive={i === 0}
-            />
-        )
-    })
-
-    const newSubmenu = settings[0].submenu.map((sub, i) => {
-        return (
-            <ButtonTab
-                key={`${settings[0].name}-${i}`}
-                buttonId={i}
-                text={sub.name}
-                setActive={() => changeActiveSubmenu(0, i)}
-                isActive={i === 0 && !sub.disabled}
-                isDisabled={typeof sub.disabled === 'undefined' ? false : sub.disabled}
-                alignText="left"
-            />
-        )
-    })
-
-    const newSettingItems = (settings[0].submenu[0].options || []).map((setting, i) => {
-        return (
-            <SettingItem
-                key={`${settings[0].name}-${settings[0].submenu[0].name}-${i}`}
-                text={setting.name}
-                value={setting.value}
-                type={setting.type}
-                options={setting.options}
-            />
-        )
-    })
-
-    const [firstLevelButtons, setFirstLevelButtons] = useState(newButtons)
-    const [submenuButtons, setSubmenuButtons] = useState(newSubmenu)
-    const [settingItems, setSettingItems] = useState(newSettingItems)
-
-    function changeActiveTab(index) {
-        const buttons = Object.keys(Tabs).map((tab, i) => {
+    function firstLevelButtonBuilder(index) {
+        return Object.keys(Tabs).map((tab, i) => {
             return (
                 <ButtonTab
                     key={tab}
@@ -68,13 +26,11 @@ function Mixed() {
                 />
             )
         })
-        setFirstLevelButtons(buttons)
-        changeActiveSubmenu(index, 0)
     }
 
-    function changeActiveSubmenu(tabIndex, submenuIndex) {
+    function secondLevelButtonBuilder(tabIndex, submenuIndex) {
         const tab = settings[tabIndex]
-        const buttons = tab.submenu.map((sub, i) => {
+        return tab.submenu.map((sub, i) => {
             return (
                 <ButtonTab
                     key={`${tab.name}-${i}`}
@@ -87,8 +43,11 @@ function Mixed() {
                 />
             )
         })
-        setSubmenuButtons(buttons)
-        setSettingItems((tab.submenu[submenuIndex].options || []).map((setting, i) => {
+    }
+
+    function settingItemsBuilder(tabIndex, submenuIndex) {
+        const tab = settings[tabIndex]
+        return (tab.submenu[submenuIndex].options || []).map((setting, i) => {
             return (
                 <SettingItem
                     key={`${tab.name}-${tab.submenu[submenuIndex].name}-${i}`}
@@ -98,7 +57,26 @@ function Mixed() {
                     options={setting.options}
                 />
             )
-        }))
+        })
+    }
+
+    const newButtons = firstLevelButtonBuilder(0)
+    const newSubmenu = secondLevelButtonBuilder(0, 0)
+    const newSettingItems = settingItemsBuilder(0, 0)
+
+    const [firstLevelButtons, setFirstLevelButtons] = useState(newButtons)
+    const [submenuButtons, setSubmenuButtons] = useState(newSubmenu)
+    const [settingItems, setSettingItems] = useState(newSettingItems)
+
+    function changeActiveTab(index) {
+        const buttons = firstLevelButtonBuilder(index)
+        setFirstLevelButtons(buttons)
+        changeActiveSubmenu(index, 0)
+    }
+
+    function changeActiveSubmenu(tabIndex, submenuIndex) {
+        setSubmenuButtons(secondLevelButtonBuilder(tabIndex, submenuIndex))
+        setSettingItems(settingItemsBuilder(tabIndex, submenuIndex))
     }
 
     return (
