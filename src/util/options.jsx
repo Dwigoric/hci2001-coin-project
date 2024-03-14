@@ -105,7 +105,9 @@ const settings = [
                 items: [
                     {
                         name: 'Mouse Input Method',
-                        type: 'enum'
+                        type: 'enum',
+                        options: ['Raw Input', 'Direct Input'],
+                        value: 'Direct Input'
                     },
                     {
                         name: 'Mouse Look Sensitivity',
