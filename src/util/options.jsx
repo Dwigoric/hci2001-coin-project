@@ -102,7 +102,7 @@ const settings = [
             },
             {
                 name: 'Keyboard / Mouse',
-                options: [
+                items: [
                     {
                         name: 'Mouse Input Method',
                         type: 'enum'

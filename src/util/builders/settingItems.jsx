@@ -3,7 +3,7 @@ import settings from '../options.jsx'
 
 function settingItemsBuilder(tabIndex, submenuIndex) {
     const tab = settings[tabIndex]
-    return (tab.submenu[submenuIndex].options || []).map((setting, i) => {
+    return (tab.submenu[submenuIndex].items || []).map((setting, i) => {
         return (
             <SettingItem
                 key={`${tab.name}-${tab.submenu[submenuIndex].name}-${i}`}
