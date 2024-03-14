@@ -17,41 +17,34 @@ SettingItem.propTypes = {
 // Constants and functions
 const carouselSettings = {
     dots: false,
-    infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
-}
-
-function optionsBuilder(options) {
-    return options.map((option) => {
-        return (
-            <div key={option}>
-                {option}
-            </div>
-        )
-    })
 }
 
 function SettingItem({ text, value, type, options = [], onSwipe = () => null }) {
     if (typeof value !== 'undefined') {
         // Move the selected value to the first index
         const index = options.indexOf(value)
-        // Only continue if the value is in the options array
-        if (index !== -1) {
-            options.splice(index, 1)
-            options.unshift(value)
-        }
+        // Shift the array to the left by the index
+        if (index !== -1) options = options.slice(index).concat(options.slice(0, index))
     }
 
-    const modifier = type === 'enum' ? (
-        <Carousel beforeChange={onSwipe} {...carouselSettings}>
-            {optionsBuilder(options)}
-        </Carousel>
-    ) : (
-        // TODO: Slider
-        <></>
-    )
+    function optionsBuilder(type, options) {
+        if (type === 'enum') return options.map((option) => (
+            <div key={`${text}-${option}`}>
+                {option}
+            </div>
+        ))
+
+        return Array(11).fill().map((_, i) => (
+            <div key={`${text}-${i}`} className={`${styles[`slider${i}`]} ${styles.slider}`}>
+                {/* TODO: Use rectangles? */}
+                {/*<div className={styles.activatedRectangle} />*/}
+                {/*<div className={styles.deactivatedRectangle} />*/}
+                {i /* Temporary */}
+            </div>
+        ))
+    }
 
     return (
         <div className={styles.settingItem}>
@@ -59,7 +52,10 @@ function SettingItem({ text, value, type, options = [], onSwipe = () => null }) 
                 {text}
             </div>
             <div className={styles.settingModifier}>
-                {modifier}
+                <Carousel beforeChange={onSwipe} speed={type === 'enum' ? 300 : 0}
+                          infinite={type === 'enum'} {...carouselSettings}>
+                    {optionsBuilder(type, options)}
+                </Carousel>
             </div>
         </div>
     )
