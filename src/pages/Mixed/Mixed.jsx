@@ -9,11 +9,17 @@ import ProfilePanel from '../../components/ProfilePanel/ProfilePanel.jsx'
 import ButtonTab from '../../components/ButtonTab/ButtonTab.jsx'
 
 // Utils
-import Tabs from '../../util/tabs.jsx'
-import settings from '../../util/options.jsx'
+import Tabs from '../../util/tabs.js'
+import settings from '../../util/options.js'
 import settingItemsBuilder from '../../util/builders/settingItems.jsx'
+import Logger from '../../util/logger.js'
+
+// Constants
+const logger = new Logger()
 
 function Mixed() {
+    logger.log({ action: 'NAVIGATE', message: 'Mixed' })
+
     function firstLevelButtonBuilder(index) {
         return Object.keys(Tabs).map((tab, i) => {
             return (
@@ -54,14 +60,18 @@ function Mixed() {
     const [settingItems, setSettingItems] = useState(newSettingItems)
 
     function changeActiveTab(index) {
+        logger.log({ action: 'CHANGE_TAB', message: Object.keys(Tabs)[index] })
         const buttons = firstLevelButtonBuilder(index)
         setFirstLevelButtons(buttons)
         changeActiveSubmenu(index, 0)
     }
 
     function changeActiveSubmenu(tabIndex, submenuIndex) {
+        logger.log({ action: 'CHANGE_SUBMENU', message: settings[tabIndex].submenu[submenuIndex].name })
         setSubmenuButtons(secondLevelButtonBuilder(tabIndex, submenuIndex))
-        setSettingItems(settingItemsBuilder(tabIndex, submenuIndex))
+        setSettingItems(settingItemsBuilder(tabIndex, submenuIndex, ({ name, data }) => {
+            logger.log({ action: 'CHANGE_SETTING', message: `${name}: ${data}` })
+        }))
     }
 
     return (
