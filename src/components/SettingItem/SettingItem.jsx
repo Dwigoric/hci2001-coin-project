@@ -46,13 +46,18 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
         ))
     }
 
+    function onSettingChange(newIndex) {
+        if (type === 'enum') callback({ name: text, data: options[newIndex] })
+        else callback({ name: text, data: newIndex })
+    }
+
     return (
         <div className={styles.settingItem}>
             <div>
                 {text}
             </div>
             <div className={styles.settingModifier}>
-                <Carousel beforeChange={callback} speed={type === 'enum' ? 300 : 0}
+                <Carousel afterChange={onSettingChange} speed={type === 'enum' ? 300 : 0}
                           infinite={type === 'enum'} {...carouselSettings}>
                     {optionsBuilder(type, options)}
                 </Carousel>
