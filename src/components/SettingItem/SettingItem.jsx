@@ -11,7 +11,7 @@ SettingItem.propTypes = {
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     type: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])),
-    onSwipe: PropTypes.func
+    callback: PropTypes.func
 }
 
 // Constants and functions
@@ -21,7 +21,7 @@ const carouselSettings = {
     slidesToScroll: 1
 }
 
-function SettingItem({ text, value, type, options = [], onSwipe = () => null }) {
+function SettingItem({ text, value, type, options = [], callback = () => null }) {
     if (typeof value !== 'undefined') {
         // Move the selected value to the first index
         const index = options.indexOf(value)
@@ -52,7 +52,7 @@ function SettingItem({ text, value, type, options = [], onSwipe = () => null }) 
                 {text}
             </div>
             <div className={styles.settingModifier}>
-                <Carousel beforeChange={onSwipe} speed={type === 'enum' ? 300 : 0}
+                <Carousel beforeChange={callback} speed={type === 'enum' ? 300 : 0}
                           infinite={type === 'enum'} {...carouselSettings}>
                     {optionsBuilder(type, options)}
                 </Carousel>

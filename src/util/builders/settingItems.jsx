@@ -1,7 +1,7 @@
 import SettingItem from '../../components/SettingItem/SettingItem.jsx'
 import settings from '../options.js'
 
-function settingItemsBuilder(tabIndex, submenuIndex, onSwipe) {
+function settingItemsBuilder(tabIndex, submenuIndex, callback) {
     const tab = settings[tabIndex]
     return (tab.submenu[submenuIndex].items || []).map((setting, i) => {
         return (
@@ -11,7 +11,7 @@ function settingItemsBuilder(tabIndex, submenuIndex, onSwipe) {
                 value={setting.value}
                 type={setting.type}
                 options={setting.options}
-                onSwipe={onSwipe}
+                callback={callback}
             />
         )
     })
