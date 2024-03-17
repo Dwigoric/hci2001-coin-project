@@ -12,10 +12,7 @@ import ButtonTab from '../../components/ButtonTab/ButtonTab.jsx'
 import Tabs from '../../util/tabs.js'
 import settings from '../../util/options.js'
 import settingItemsBuilder from '../../util/builders/settingItems.jsx'
-import Logger from '../../util/logger.js'
-
-// Constants
-const logger = new Logger()
+import logger from '../../util/logger.js'
 
 function Mixed() {
     logger.log({ action: 'NAVIGATE', message: 'Mixed' })
