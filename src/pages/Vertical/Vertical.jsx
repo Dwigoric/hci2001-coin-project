@@ -5,6 +5,7 @@ import { Slider } from '@mui/material';
 
 import settings from '../../util/options';
 
+import ProfilePanel from '../../components/ProfilePanel/ProfilePanel.jsx'
 import ButtonMain from '../../components/ButtonMain/ButtonMain';
 import ButtonSub from '../../components/ButtonSub/ButtonSub';
 
@@ -27,74 +28,76 @@ function Vertical() {
     }, [selectionState])
 
     return (
-        <section className={styles.settingsBody}>
-            <section className={styles.sidebar}>
-                {settings.map(({ name, submenu }, index) =>
-                    selectionState[0] == name ? (
-                        <>
-                            <ButtonMain
-                                selectionState={selectionState}
-                                setSelectionState={setSelectionState}
-                                style="dropdown"
-                                state="active"
-                                text={name}
-                                key={index}
-                            />
+        <div className={styles.verticalPage}>
+            <section className={styles.settingsBodyContainer}>
+                <ProfilePanel />
+                <div className={styles.settingsBody}>
+                    <section className={styles.sidebar}>
+                        {settings.map(({ name, submenu }, index) =>
+                            selectionState[0] == name ? (
+                                <>
+                                    <ButtonMain
+                                        selectionState={selectionState}
+                                        setSelectionState={setSelectionState}
+                                        style="dropdown"
+                                        state="active"
+                                        text={name}
+                                        key={index}
+                                    />
 
-                            <section className={styles.submenu}>
-                                {submenu.map(({ name }, index) =>
-                                    selectionState[1] == name ? (
-                                        <ButtonSub
-                                            selectionState={selectionState}
-                                            setSelectionState={
-                                                setSelectionState
-                                            }
-                                            state="active"
-                                            text={name}
-                                            key={index}
-                                        />
+                                    <section className={styles.submenu}>
+                                        {submenu.map(({ name }, index) =>
+                                            selectionState[1] == name ? (
+                                                <ButtonSub
+                                                    selectionState={selectionState}
+                                                    setSelectionState={setSelectionState}
+                                                    state="active"
+                                                    text={name}
+                                                    key={index}
+                                                />
+                                            ) : (
+                                                <ButtonSub
+                                                    selectionState={selectionState}
+                                                    setSelectionState={setSelectionState}
+                                                    state="inactive"
+                                                    text={name}
+                                                    key={index}
+                                                />
+                                            )
+                                        )}
+                                    </section>
+                                </>
+                            ) : (
+                                <ButtonMain
+                                    selectionState={selectionState}
+                                    setSelectionState={setSelectionState}
+                                    style="dropdown"
+                                    state="inactive"
+                                    text={name}
+                                    key={index}
+                                />
+                            )
+                        )}
+                    </section>
+
+                    <section className={styles.mainPanel}>
+                        {options != null &&
+                            options.map(({ name, type }, index) => (
+                                <div className={styles.option} key={index}>
+                                    <span>{name}</span>
+
+                                    {type == 'slider' ? (
+                                        <Slider size="medium" />
                                     ) : (
-                                        <ButtonSub
-                                            selectionState={selectionState}
-                                            setSelectionState={
-                                                setSelectionState
-                                            }
-                                            state="inactive"
-                                            text={name}
-                                            key={index}
-                                        />
-                                    )
-                                )}
-                            </section>
-                        </>
-                    ) : (
-                        <ButtonMain
-                            selectionState={selectionState}
-                            setSelectionState={setSelectionState}
-                            style="dropdown"
-                            state="inactive"
-                            text={name}
-                            key={index}
-                        />
-                    )
-                )}
+                                        <span>{type}</span>
+                                    )}
+                                </div>
+                            ))}
+                    </section>
+                </div>
             </section>
-
-            <section className={styles.mainPanel}>
-                {options != null &&
-                    options.map(({ name, type }, index) => (
-                        <div className={styles.option} key={index}>
-                            <span>{name}</span>
-
-                            {type == 'slider'
-                                ? <Slider size='medium'/>
-                                : <span>{type}</span>
-                            }
-                        </div>
-                    ))}
-            </section>
-        </section>
-    );
+        </div>
+    )
 }
 
 export default Vertical;
