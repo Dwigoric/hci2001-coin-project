@@ -32,7 +32,7 @@
 }
 
 .sidebar {
-    width: 256px;
+    width: 25%;
 
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
 }
 
 .submenu {
-    width: 235px;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
