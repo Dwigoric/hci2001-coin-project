@@ -39,10 +39,28 @@ body {
     padding: 0;
 }
 
+/* Export button */
+#export-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 100;
+    background-color: var(--bg-color-dark);
+    color: var(--bg-color-light);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
 /* MUI Slider Styling */
 .MuiSlider-root {
     width: 160px !important;
 }
+
 .MuiSlider-thumb, .MuiSlider-thumb:is(:hover, .Mui-active) {
     display: none !important;
 }
