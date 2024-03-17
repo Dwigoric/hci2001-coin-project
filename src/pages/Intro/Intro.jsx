@@ -1,5 +1,6 @@
 import styles from './Intro.module.css'
 import { useNavigate } from 'react-router-dom'
+import logger from '../../util/logger.js'
 
 function requestFullScreen() {
     const elem = document.documentElement
@@ -55,13 +56,22 @@ function Intro() {
                 Click the appropriate button below to begin.
                 <div className={styles.taskButtonList}>
                     <button>
-                        <a onClick={() => navigate('/horizontal')}>Horizontal</a>
+                        <a onClick={() => {
+                            logger.log({ action: 'NAVIGATE', message: 'Horizontal' })
+                            navigate('/horizontal')
+                        }}>Horizontal</a>
                     </button>
                     <button>
-                        <a onClick={() => navigate('/vertical')}>Vertical</a>
+                        <a onClick={() => {
+                            logger.log({ action: 'NAVIGATE', message: 'Vertical' })
+                            navigate('/vertical')
+                        }}>Vertical</a>
                     </button>
                     <button>
-                        <a onClick={() => navigate('/mixed')}>Mixed</a>
+                        <a onClick={() => {
+                            logger.log({ action: 'NAVIGATE', message: 'Mixed' })
+                            navigate('/mixed')
+                        }}>Mixed</a>
                     </button>
                 </div>
             </div>

@@ -15,8 +15,6 @@ import settingItemsBuilder from '../../util/builders/settingItems.jsx'
 import logger from '../../util/logger.js'
 
 function Mixed() {
-    logger.log({ action: 'NAVIGATE', message: 'Mixed' })
-
     function firstLevelButtonBuilder(index) {
         return Object.keys(Tabs).map((tab, i) => {
             return (
