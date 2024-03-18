@@ -40,7 +40,7 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
                 return <Slider size="large" defaultValue={50} />
             case 'info':
                 return (
-                    <div style={{ 'text-align': 'right', 'transform': 'translate(8%, 0)' }}>
+                    <div style={{ textAlign: 'right', transform: 'translate(8%, 0)' }}>
                         {value}
                     </div>
                 )
