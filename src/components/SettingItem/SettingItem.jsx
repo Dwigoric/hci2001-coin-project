@@ -37,7 +37,7 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
                     </Carousel>
                 )
             case 'slider':
-                return <Slider size="large" defaultValue={50}/>
+                return <Slider size="large" defaultValue={50} />
             case 'info':
                 return (
                     <div style={{ 'text-align': 'right', 'transform': 'translate(8%, 0)' }}>
@@ -55,18 +55,9 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
     }
 
     function optionsBuilder(type, options) {
-        if (type === 'enum') return options.map((option) => (
+        return options.map((option) => (
             <div key={`${text}-${option}`}>
                 {option}
-            </div>
-        ))
-
-        return Array(11).fill().map((_, i) => (
-            <div key={`${text}-${i}`} className={`${styles[`slider${i}`]} ${styles.slider}`}>
-                {/* TODO: Use rectangles? */}
-                {/*<div className={styles.activatedRectangle} />*/}
-                {/*<div className={styles.deactivatedRectangle} />*/}
-                {i /* Temporary */}
             </div>
         ))
     }
