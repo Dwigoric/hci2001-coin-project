@@ -1,10 +1,11 @@
 .settingsBody {
-    width: 1162px;
-
+    width: 75vw;
+    height: 75vh;
     position: absolute;
-    top: 300px;
-    left: 50%;
-    transform: translate(-50%, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    position: absolute;
 
     font-size: 2rem;
     font-family: var(--font-family);
@@ -13,12 +14,16 @@
 }
 
 .sidebar {
+    margin-top: 5px;
     width: 100%;
 
     display: flex;
     align-items: end;
     gap: 5px;
-    margin-bottom:2px;
+    margin-bottom:5px;
+}
+.margin-5{
+    margin-bottom: 5px;
 }
 
 .submenuLabel {
@@ -27,6 +32,7 @@
 }
 
 .mainPanel {
+    margin-top: 5px;
     background-color: var(--bg-color-dark);
 
     width: auto;
@@ -41,4 +47,12 @@
 
     display: flex;
     justify-content: space-between;
+}
+.settingsThemselves {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
 }

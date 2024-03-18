@@ -1,44 +1,36 @@
-import styles from './Horizontal.module.css'
-
-import { useEffect, useState } from 'react'
+import styles from './Horizontal.module.css';
+//utils
 import settings from '../../util/options';
-
+import settingItemsBuilder from '../../util/builders/settingItems';
+import logger from '../../util/logger.js'
+//components
 import ButtonMain from '../../components/ButtonMain/ButtonMain';
 import ButtonSub from '../../components/ButtonSub/ButtonSub';
+import ProfilePanel from '../../components/ProfilePanel/ProfilePanel.jsx';
+//package imports
 import React from 'react';
+import { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+
 function Horizontal() {
-     // [currently selected main setting, currently selected subsetting]
-     const [selectionState, setSelectionState] = useState([
-        'SETTINGS',
-        'none',
-    ]);
-    const [options, setOptions] = useState();
-
-    useEffect(() => {
-        let currMain = settings.find(main => main.name == selectionState[0])
-        if (!currMain) return
-
-        let currSub = currMain.submenu.find(sub => sub.name == selectionState[1])
-        if (!currSub) return
-
-        setOptions(currSub.options);
-    }, [selectionState])
+    const [selectionState,setSelectionState] = useState(['ONLINE', 'Jobs']);
     const carouselSettings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 3
       };
     return (
+        
         <section className={styles.settingsBody}>
+            <ProfilePanel className="margin-5"/>
             <section className={styles.sidebar}>
                 {settings.map(
-                    ({ name, submenu }, index) =>
+                    ({ name }, index) =>
                     selectionState[0] === name ? (
                         <ButtonMain
                         key={index}
@@ -47,6 +39,10 @@ function Horizontal() {
                         style="dropdown"
                         state="active"
                         text={name}
+                        callback={() => logger.log({
+                            action: 'CHANGE_TAB',
+                            message: name
+                        })}
                         />
                     ) : (
                         <ButtonMain
@@ -56,6 +52,10 @@ function Horizontal() {
                         style="dropdown"
                         state="inactive"
                         text={name}
+                        callback={() => logger.log({
+                            action: 'CHANGE_TAB',
+                            message: name
+                        })}
                         />
                     )
                 )}
@@ -69,13 +69,17 @@ function Horizontal() {
                     {settings
                     .find((setting) => setting.name === selectionState[0])
                     .submenu.map(({ name }, index) => (
-                        <div class="slider_div" >
+                        <div className="submenuLabel" key={index} >
                         <ButtonSub
                         key={index}
                         selectionState={selectionState}
                         setSelectionState={setSelectionState}
                         state={selectionState[1] === name ? "active" : "inactive"}
                         text={name}
+                        callback={() => logger.log({
+                            action: 'CHANGE_SUBMENU',
+                            message: name
+                        })}
                         />
                         </div>
                     ))}
@@ -85,13 +89,18 @@ function Horizontal() {
             
 
             <section className={styles.mainPanel}>
-                {options != null &&
-                    options.map(({ name, type }, index) => (
-                        <div className={styles.option} key={index}>
-                            <span>{name}</span>
-                            <span>{type}</span>
-                        </div>
-                    ))}
+                <div className={styles.settingsThemselves}>
+                    {settingItemsBuilder(
+                        selectionState[0],
+                        selectionState[1],
+                        ({ name, data }) => {
+                            logger.log({
+                                action: 'CHANGE_SETTING',
+                                message: `${name}: ${data}`
+                            })
+                        }
+                    )}
+                </div>
             </section>
         </section>
     );
