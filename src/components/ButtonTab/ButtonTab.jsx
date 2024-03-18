@@ -7,16 +7,15 @@ ButtonTab.propTypes = {
     text: PropTypes.string,
     setActive: PropTypes.func,
     isActive: PropTypes.bool,
-    isDisabled: PropTypes.bool,
     alignText: PropTypes.string
 }
 
-function ButtonTab({ buttonId, text, setActive, isActive, isDisabled = false, alignText = 'center' }) {
+function ButtonTab({ buttonId, text, setActive, isActive, alignText = 'center' }) {
 
     return (
         <button
             className={`${styles.button} ${isActive ? styles.active : ''}`}
-            onClick={isDisabled ? () => null : () => setActive(buttonId)}
+            onClick={() => setActive(buttonId)}
         >
             <span className={styles.label} style={{ textAlign: alignText }}>
                 {text}
