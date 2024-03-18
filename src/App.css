@@ -57,10 +57,6 @@ body {
 }
 
 /* MUI Slider Styling */
-.MuiSlider-root {
-    width: 160px !important;
-}
-
 .MuiSlider-thumb, .MuiSlider-thumb:is(:hover, .Mui-active) {
     display: none !important;
 }

@@ -1,6 +1,7 @@
 // Package imports
 import PropTypes from 'prop-types'
 import Carousel from 'react-slick'
+import { Slider } from '@mui/material'
 
 // Stylesheets
 import styles from './SettingItem.module.css'
@@ -22,6 +23,30 @@ const carouselSettings = {
 }
 
 function SettingItem({ text, value, type, options = [], callback = () => null }) {
+    function typeBuilder(type, value, options = []) {
+        switch (type) {
+            case 'enum':
+                return (
+                    <Carousel
+                        afterChange={onSettingChange}
+                        speed={type === 'enum' ? 300 : 0}
+                        infinite={type === 'enum'}
+                        {...carouselSettings}
+                    >
+                        {optionsBuilder(type, options)}
+                    </Carousel>
+                )
+            case 'slider':
+                return <Slider size="large" defaultValue={50}/>
+            case 'info':
+                return (
+                    <div style={{ 'text-align': 'right', 'transform': 'translate(8%, 0)' }}>
+                        {value}
+                    </div>
+                )
+        }
+    }
+
     if (typeof value !== 'undefined') {
         // Move the selected value to the first index
         const index = options.indexOf(value)
@@ -53,19 +78,8 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
 
     return (
         <div className={styles.settingItem}>
-            <div>
-                {text}
-            </div>
-            <div className={styles.settingModifier}>
-                {
-                    type === 'info' ? <div style={{ 'text-align': 'right', 'transform': 'translate(8%, 0)' }}>
-                        {value}
-                    </div> : <Carousel afterChange={onSettingChange} speed={type === 'enum' ? 300 : 0}
-                                       infinite={type === 'enum'} {...carouselSettings}>
-                        {optionsBuilder(type, options)}
-                    </Carousel>
-                }
-            </div>
+            <div>{text}</div>
+            <div className={styles.settingModifier}>{typeBuilder(type, value, options)}</div>
         </div>
     )
 }
