@@ -1,6 +1,7 @@
 class Logger {
     constructor() {
         this.logs = []
+        this.isGamer = false
     }
 
     log({ action, message }) {
@@ -18,12 +19,15 @@ class Logger {
         this.logs.push({ action, timestamp, timeDelta, message })
     }
 
-    printLogCount() {
-        console.log(`${this.logs.length} logs`)
+    setGamer() {
+        this.isGamer = true
     }
 
     exportAsJSON() {
-        return JSON.stringify(this.logs)
+        return JSON.stringify({
+            isGamer: this.isGamer,
+            logs: this.logs
+        }, null, 2)
     }
 }
 

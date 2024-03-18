@@ -49,6 +49,15 @@ function Intro() {
                         }}
                     >You are using your browser in full screen.
                     </li>
+                    <li>
+                        If you have played GTA V before, <a
+                        onClick={() => logger.setGamer()}
+                        style={{
+                            cursor: 'pointer',
+                            textDecoration: 'underline'
+                        }}
+                    >click here</a>.
+                    </li>
                 </ol>
             </p>
             <div>
