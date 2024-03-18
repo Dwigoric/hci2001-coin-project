@@ -58,11 +58,11 @@ function Mixed() {
         logger.log({ action: 'CHANGE_TAB', message: Object.keys(Tabs)[index] })
         const buttons = firstLevelButtonBuilder(index)
         setFirstLevelButtons(buttons)
-        changeActiveSubmenu(index, 0)
+        changeActiveSubmenu(index, 0, false)
     }
 
-    function changeActiveSubmenu(tabIndex, submenuIndex) {
-        logger.log({ action: 'CHANGE_SUBMENU', message: settings[tabIndex].submenu[submenuIndex].name })
+    function changeActiveSubmenu(tabIndex, submenuIndex, log = true) {
+        if (log) logger.log({ action: 'CHANGE_SUBMENU', message: settings[tabIndex].submenu[submenuIndex].name })
         setSubmenuButtons(secondLevelButtonBuilder(tabIndex, submenuIndex))
         setSettingItems(settingItemsBuilder(tabIndex, submenuIndex, ({ name, data }) => {
             logger.log({ action: 'CHANGE_SETTING', message: `${name}: ${data}` })
