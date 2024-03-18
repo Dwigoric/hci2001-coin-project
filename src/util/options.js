@@ -151,13 +151,154 @@ const settings = [
         name: Tabs.STATS,
         submenu: [
             {
-                name: 'Career'
+                name: 'Career',
+                items: [
+                    {
+                        name: 'Global RP',
+                        type: 'info',
+                        value: '1,234,567'
+                    },
+                    {
+                        name: 'Overall income',
+                        type: 'info',
+                        value: '$12,345,678'
+                    },
+                    {
+                        name: 'Overall expenses',
+                        type: 'info',
+                        value: '$1,234,567'
+                    },
+                    {
+                        name: 'Total players killed (Instanced)',
+                        type: 'info',
+                        value: '123'
+                    },
+                    {
+                        name: 'Total death by players (Instanced)',
+                        type: 'info',
+                        value: '123'
+                    },
+                    {
+                        name: 'Competitive player kill/death ratio',
+                        type: 'info',
+                        value: '1.23'
+                    },
+                    {
+                        name: 'Distance traveled',
+                        type: 'info',
+                        value: '123.45 kilometers'
+                    },
+                    {
+                        name: 'Favorite radio station',
+                        type: 'info',
+                        value: 'Los Santos Rock Radio'
+                    },
+                    {
+                        name: 'Time spent in GTA Online',
+                        type: 'info',
+                        value: '123d 12h 34m 56s'
+                    },
+                    {
+                        name: 'Time played in first person',
+                        type: 'info',
+                        value: '12d 3h 45m 6s'
+                    },
+                    {
+                        name: 'Time spent in Deathmatches',
+                        type: 'info',
+                        value: '1d 2h 3m 4s'
+                    },
+                    {
+                        name: 'Time spent in races',
+                        type: 'info',
+                        value: '12h 34m 56s'
+                    },
+                    {
+                        name: 'Time spent in the Creator',
+                        type: 'info',
+                        value: '1h 23m 45s'
+                    },
+                    {
+                        name: 'Deathmatches published',
+                        type: 'info',
+                        value: '0'
+                    }
+                ]
             },
             {
-                name: 'Skills'
-            },
-            {
-                name: 'General'
+                name: 'General',
+                items: [
+                    {
+                        name: 'Time played as character',
+                        type: 'info',
+                        value: '12d 3h 45m 6s'
+                    },
+                    {
+                        name: 'Character created',
+                        type: 'info',
+                        value: '2030 / 12 / 31'
+                    },
+                    {
+                        name: 'Last ranked up',
+                        type: 'info',
+                        value: '2034 / 12 / 31'
+                    },
+                    {
+                        name: 'Longest single game session',
+                        type: 'info',
+                        value: '6h 12m 34s'
+                    },
+                    {
+                        name: 'Average time per session',
+                        type: 'info',
+                        value: '1h 23m 45s'
+                    },
+                    {
+                        name: 'Total deaths',
+                        type: 'info',
+                        value: '1,234'
+                    },
+                    {
+                        name: 'Deaths by explosion',
+                        type: 'info',
+                        value: '234'
+                    },
+                    {
+                        name: 'Deaths by falling',
+                        type: 'info',
+                        value: '23'
+                    },
+                    {
+                        name: 'Deaths by fire',
+                        type: 'info',
+                        value: '12'
+                    },
+                    {
+                        name: 'Deaths by traffic',
+                        type: 'info',
+                        value: '56'
+                    },
+                    {
+                        name: 'Deaths by drowning',
+                        type: 'info',
+                        value: '8'
+                    },
+                    {
+                        name: 'Time swimming',
+                        type: 'info',
+                        value: '6h 12m 34s'
+                    },
+                    {
+                        name: 'Distance travelled swimming',
+                        type: 'info',
+                        value: '123.45 kilometers'
+                    },
+                    {
+                        name: 'Time underwater',
+                        type: 'info',
+                        value: '12h 34m 56s'
+                    }
+                ]
             },
             {
                 name: 'Crimes'
@@ -170,15 +311,6 @@ const settings = [
             },
             {
                 name: 'Combat'
-            },
-            {
-                name: 'Weapons'
-            },
-            {
-                name: 'Awards'
-            },
-            {
-                name: 'Unlocks'
             }
         ]
     }
