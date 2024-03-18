@@ -57,10 +57,14 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
                 {text}
             </div>
             <div className={styles.settingModifier}>
-                <Carousel afterChange={onSettingChange} speed={type === 'enum' ? 300 : 0}
-                          infinite={type === 'enum'} {...carouselSettings}>
-                    {optionsBuilder(type, options)}
-                </Carousel>
+                {
+                    type === 'info' ? <div style={{ 'text-align': 'right' }}>
+                        {value}
+                    </div> : <Carousel afterChange={onSettingChange} speed={type === 'enum' ? 300 : 0}
+                                       infinite={type === 'enum'} {...carouselSettings}>
+                        {optionsBuilder(type, options)}
+                    </Carousel>
+                }
             </div>
         </div>
     )
