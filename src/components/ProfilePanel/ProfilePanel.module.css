@@ -1,0 +1,48 @@
+.profilePanel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-family);
+    font-size: 2.5rem;
+}
+
+.profilePanel h1 {
+    font-family: ChaletComprime-CologneSixty, sans-serif;
+    color: whitesmoke;
+    text-shadow: 2px 2px 0 var(--bg-color-dark);
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    text-shadow: 1px 1px 0 var(--bg-color-dark);
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    text-shadow: 1px 1px 0 var(--bg-color-dark);
+}
+
+.userImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.userImage img {
+    width: 50px;
+    height: 50px;
+}

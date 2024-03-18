@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// Package imports
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import routes from './routes/routes'
+
+// Utilities
+import logger from './util/logger.js'
+
+// Function to export collected data
+function exportData() {
+    const data = logger.exportAsJSON()
+
+    const blob = new Blob([data], { type: 'application/json' })
+    const link = document.createElement('a')
+    link.download = 'collected-data.json'
+    link.href = window.URL.createObjectURL(blob)
+    link.dataset.downloadurl = ['application/json', link.download, link.href].join(':')
+
+    const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+    })
+
+    link.dispatchEvent(event)
+    window.URL.revokeObjectURL(link.href)
+    link.remove()
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                {routes.map((route, index) => (
+                    <Route
+                        path={route.path}
+                        element={route.element}
+                        key={index}
+                    />
+                ))}
+            </Routes>
+            <button id="export-button" onClick={exportData}>Export Collected Data</button>
+        </>
+    )
 }
 
 export default App

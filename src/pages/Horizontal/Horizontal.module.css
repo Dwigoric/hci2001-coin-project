@@ -1,0 +1,60 @@
+.horizontalPage{
+    width:100vw;
+    height:100vh;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:initial;
+}
+
+.settingsBody {
+    width:75%;
+    height: 75%;
+}
+
+.sidebar {
+    margin-top: 5px;
+    width: 100%;
+
+    display: flex;
+    align-items: end;
+    gap: 5px;
+    margin-bottom:5px;
+}
+.margin-5{
+    margin-bottom: 5px;
+}
+
+.submenuLabel {
+    color: white;
+    text-align: start;
+}
+
+.mainPanel {
+    margin-top: 5px;
+    background-color: var(--bg-color-dark);
+
+    width: auto;
+    height: 90%;
+    overflow-y: scroll;
+
+    flex-grow: 1;
+}
+
+.option {
+    padding: 10px 12px;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+}
+.settingsThemselves {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
+}
