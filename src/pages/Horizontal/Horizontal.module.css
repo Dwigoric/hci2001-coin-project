@@ -36,7 +36,7 @@
     background-color: var(--bg-color-dark);
 
     width: auto;
-    height: 587px;
+    height: 75%;
 
     flex-grow: 1;
 }
