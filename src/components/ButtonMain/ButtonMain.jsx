@@ -10,13 +10,17 @@ ButtonMain.propTypes = {
     style: PropTypes.string,
     state: PropTypes.string,
     text: PropTypes.string,
+    callback: PropTypes.string,
 };
 
-function ButtonMain({ selectionState, setSelectionState, style, state, text }) {
+function ButtonMain({ setSelectionState, style, state, text, callback }) {
     return (
         <button
             className={`${styles.button} ${styles[state]}`}
-            onClick={() => setSelectionState([text, selectionState[1]])}
+            onClick={() => {
+                setSelectionState([text, 0])
+                callback()
+            }}
         >
             <span className={styles.label}>{text}</span>
 

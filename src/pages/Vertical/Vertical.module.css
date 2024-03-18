@@ -40,6 +40,10 @@
     gap: 5px;
 }
 
+.sidebarItem {
+    width: 100%;
+}
+
 .submenu {
     width: 100%;
 
@@ -61,10 +65,11 @@
     flex-grow: 1;
 }
 
-.option {
-    padding: 10px 12px;
-    color: white;
-
+.settingsThemselves {
+    width: auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
 }

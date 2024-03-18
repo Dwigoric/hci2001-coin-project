@@ -6,13 +6,17 @@ ButtonSub.propTypes = {
     setSelectionState: PropTypes.any,
     state: PropTypes.string,
     text: PropTypes.string,
+    callback: PropTypes.func,
 };
 
-function ButtonSub({ selectionState, setSelectionState, state, text }) {
+function ButtonSub({ selectionState, setSelectionState, state, text, callback }) {
     return (
         <button
             className={`${styles.button} ${styles[state]}`}
-            onClick={() => setSelectionState([selectionState[0], text])}
+            onClick={() => {
+                setSelectionState([selectionState[0], text])
+                callback()
+            }}
         >
             <span className={styles.label}>{text}</span>
         </button>

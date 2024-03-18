@@ -1,31 +1,22 @@
+// Package imports
+import { useState } from 'react'
+
+// Stylesheets
 import styles from './Vertical.module.css'
 
-import { useEffect, useState } from 'react'
-import { Slider } from '@mui/material';
-
-import settings from '../../util/options';
-
+// Components
 import ProfilePanel from '../../components/ProfilePanel/ProfilePanel.jsx'
-import ButtonMain from '../../components/ButtonMain/ButtonMain';
-import ButtonSub from '../../components/ButtonSub/ButtonSub';
+import ButtonMain from '../../components/ButtonMain/ButtonMain'
+import ButtonSub from '../../components/ButtonSub/ButtonSub'
+
+// Utils
+import settings from '../../util/options'
+import settingItemsBuilder from '../../util/builders/settingItems.jsx'
+import logger from '../../util/logger.js'
 
 function Vertical() {
     // [currently selected main setting, currently selected subsetting]
-    const [selectionState, setSelectionState] = useState([
-        'none',
-        'none',
-    ]);
-    const [options, setOptions] = useState();
-
-    useEffect(() => {
-        let currMain = settings.find(main => main.name == selectionState[0])
-        if (!currMain) return
-
-        let currSub = currMain.submenu.find(sub => sub.name == selectionState[1])
-        if (!currSub) return
-
-        setOptions(currSub.items);
-    }, [selectionState])
+    const [selectionState, setSelectionState] = useState(['ONLINE', 'Jobs'])
 
     return (
         <div className={styles.verticalPage}>
@@ -35,25 +26,33 @@ function Vertical() {
                     <section className={styles.sidebar}>
                         {settings.map(({ name, submenu }, index) =>
                             selectionState[0] == name ? (
-                                <>
+                                <div className={styles.sidebarItem} key={index}>
                                     <ButtonMain
                                         selectionState={selectionState}
                                         setSelectionState={setSelectionState}
                                         style="dropdown"
                                         state="active"
                                         text={name}
-                                        key={index}
+                                        callback={() => logger.log({
+                                            action: 'CHANGE_TAB',
+                                            message: name
+                                        })}
                                     />
 
                                     <section className={styles.submenu}>
                                         {submenu.map(({ name }, index) =>
-                                            selectionState[1] == name ? (
+                                            selectionState[1] == name ||
+                                            selectionState[1] == index ? (
                                                 <ButtonSub
                                                     selectionState={selectionState}
                                                     setSelectionState={setSelectionState}
                                                     state="active"
                                                     text={name}
                                                     key={index}
+                                                    callback={() => logger.log({
+                                                        action: 'CHANGE_SUBMENU',
+                                                        message: name
+                                                    })}
                                                 />
                                             ) : (
                                                 <ButtonSub
@@ -62,11 +61,15 @@ function Vertical() {
                                                     state="inactive"
                                                     text={name}
                                                     key={index}
+                                                    callback={() => logger.log({
+                                                        action: 'CHANGE_SUBMENU',
+                                                        message: name
+                                                    })}
                                                 />
                                             )
                                         )}
                                     </section>
-                                </>
+                                </div>
                             ) : (
                                 <ButtonMain
                                     selectionState={selectionState}
@@ -75,24 +78,28 @@ function Vertical() {
                                     state="inactive"
                                     text={name}
                                     key={index}
+                                    callback={() => logger.log({
+                                        action: 'CHANGE_TAB',
+                                        message: name
+                                    })}
                                 />
                             )
                         )}
                     </section>
 
                     <section className={styles.mainPanel}>
-                        {options != null &&
-                            options.map(({ name, type }, index) => (
-                                <div className={styles.option} key={index}>
-                                    <span>{name}</span>
-
-                                    {type == 'slider' ? (
-                                        <Slider size="medium" />
-                                    ) : (
-                                        <span>{type}</span>
-                                    )}
-                                </div>
-                            ))}
+                        <div className={styles.settingsThemselves}>
+                            {settingItemsBuilder(
+                                selectionState[0],
+                                selectionState[1],
+                                ({ name, data }) => {
+                                    logger.log({
+                                        action: 'CHANGE_SETTING',
+                                        message: `${name}: ${data}`
+                                    })
+                                }
+                            )}
+                        </div>
                     </section>
                 </div>
             </section>
@@ -100,4 +107,4 @@ function Vertical() {
     )
 }
 
-export default Vertical;
+export default Vertical
