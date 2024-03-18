@@ -10,7 +10,7 @@ ButtonMain.propTypes = {
     style: PropTypes.string,
     state: PropTypes.string,
     text: PropTypes.string,
-    callback: PropTypes.string,
+    callback: PropTypes.func,
 };
 
 function ButtonMain({ setSelectionState, style, state, text, callback }) {
