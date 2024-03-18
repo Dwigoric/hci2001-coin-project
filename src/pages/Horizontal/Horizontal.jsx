@@ -25,7 +25,7 @@ function Horizontal() {
         slidesToScroll: 3
       };
     return (
-        
+        <section className={styles.horizontalPage}>
         <section className={styles.settingsBody}>
             <ProfilePanel className="margin-5"/>
             <section className={styles.sidebar}>
@@ -102,6 +102,7 @@ function Horizontal() {
                     )}
                 </div>
             </section>
+        </section>
         </section>
     );
 }
