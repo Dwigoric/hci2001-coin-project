@@ -6,6 +6,9 @@ import { Slider } from '@mui/material'
 // Stylesheets
 import styles from './SettingItem.module.css'
 
+// Utils
+import logger from '../../util/logger.js'
+
 // Prop types
 SettingItem.propTypes = {
     text: PropTypes.string,
@@ -23,7 +26,7 @@ const carouselSettings = {
 }
 
 function SettingItem({ text, value, type, options = [], callback = () => null }) {
-    function typeBuilder(type, value, options = []) {
+    function typeBuilder(text, value, type, options = []) {
         switch (type) {
             case 'enum':
                 return (
@@ -37,12 +40,19 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
                     </Carousel>
                 )
             case 'slider':
-                return <Slider size="large" defaultValue={50} />
+                return (
+                    <Slider
+                        size="large"
+                        defaultValue={50}
+                        onChangeCommitted={(event, value) => logger.log({
+                            action: 'CHANGE_SLIDER_VALUE',
+                            message: `${text}: ${value}`
+                        })}
+                    />
+                )
             case 'info':
                 return (
-                    <div style={{ textAlign: 'right', transform: 'translate(8%, 0)' }}>
-                        {value}
-                    </div>
+                    <div style={{ textAlign: 'right', transform: 'translate(8%, 0)' }}>{value}</div>
                 )
         }
     }
@@ -70,7 +80,7 @@ function SettingItem({ text, value, type, options = [], callback = () => null })
     return (
         <div className={styles.settingItem}>
             <div>{text}</div>
-            <div className={styles.settingModifier}>{typeBuilder(type, value, options)}</div>
+            <div className={styles.settingModifier}>{typeBuilder(text, value, type, options)}</div>
         </div>
     )
 }
