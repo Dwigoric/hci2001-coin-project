@@ -956,16 +956,304 @@ const settings = [
                 ]
             },
             {
-                name: 'Crimes'
+                name: 'Crimes',
+                items: [
+                    {
+                        name: 'Cops killed',
+                        type: 'info',
+                        value: '567'
+                    },
+                    {
+                        name: 'NOOSE killed',
+                        type: 'info',
+                        value: '12'
+                    },
+                    {
+                        name: 'Times Wanted',
+                        type: 'info',
+                        value: '456'
+                    },
+                    {
+                        name: 'Wanted stars attained',
+                        type: 'info',
+                        value: '1,234'
+                    },
+                    {
+                        name: 'Wanted stars evaded',
+                        type: 'info',
+                        value: '1,123'
+                    },
+                    {
+                        name: 'Time spent with a Wanted Level',
+                        type: 'info',
+                        value: '12h 34m 56s'
+                    },
+                    {
+                        name: 'Last Wanted Level duration',
+                        type: 'info',
+                        value: '12m 34s'
+                    },
+                    {
+                        name: 'Longest Wanted Level duration',
+                        type: 'info',
+                        value: '45m 6s'
+                    },
+                    {
+                        name: 'Time spent with a 5 star Wanted Level',
+                        type: 'info',
+                        value: '1h 23m 45s'
+                    },
+                    {
+                        name: 'Drive-by kills as driver',
+                        type: 'info',
+                        value: '123'
+                    },
+                    {
+                        name: 'Drive-by kills as passenger',
+                        type: 'info',
+                        value: '234'
+                    },
+                    {
+                        name: 'Tires shot out',
+                        type: 'info',
+                        value: '2,345'
+                    },
+                    {
+                        name: 'Vehicular kills',
+                        type: 'info',
+                        value: '123'
+                    },
+                    {
+                        name: 'Cars stolen',
+                        type: 'info',
+                        value: '234'
+                    }
+                ]
             },
             {
-                name: 'Vehicles'
+                name: 'Vehicles',
+                items: [
+                    {
+                        name: 'Favorite Bike',
+                        type: 'info',
+                        value: 'Vortex'
+                    },
+                    {
+                        name: 'Highest Hydraulic Jump',
+                        type: 'info',
+                        value: '0.00 meters'
+                    },
+                    {
+                        name: 'Time driving cars',
+                        type: 'info',
+                        value: '12d 3h 45m 6s'
+                    },
+                    {
+                        name: 'Distance traveled in cars',
+                        type: 'info',
+                        value: '123.45 kilometers'
+                    },
+                    {
+                        name: 'Time riding motorcycles',
+                        type: 'info',
+                        value: '12h 34m 56s'
+                    },
+                    {
+                        name: 'Distance traveled on motorcycles',
+                        type: 'info',
+                        value: '12.34 kilometers'
+                    },
+                    {
+                        name: 'Time flying helicopters',
+                        type: 'info',
+                        value: '1h 23m 45s'
+                    },
+                    {
+                        name: 'Distance traveled in helicopters',
+                        type: 'info',
+                        value: '1.23 kilometers'
+                    },
+                    {
+                        name: 'Time flying planes',
+                        type: 'info',
+                        value: '12m 34s'
+                    },
+                    {
+                        name: 'Distance traveled in planes',
+                        type: 'info',
+                        value: '0.12 kilometers'
+                    },
+                    {
+                        name: 'Time sailing boats',
+                        type: 'info',
+                        value: '12s'
+                    },
+                    {
+                        name: 'Distance traveled in boats',
+                        type: 'info',
+                        value: '0.01 kilometers'
+                    },
+                    {
+                        name: 'Time riding ATVs',
+                        type: 'info',
+                        value: '1m 23s'
+                    },
+                    {
+                        name: 'Distance traveled on ATVs',
+                        type: 'info',
+                        value: '0.001 kilometers'
+                    }
+                ]
             },
             {
-                name: 'Cash'
+                name: 'Cash',
+                items: [
+                    {
+                        name: 'Spent on weapons & armor',
+                        type: 'info',
+                        value: '$1,234,567'
+                    },
+                    {
+                        name: 'Spent on vehicles & maintenance',
+                        type: 'info',
+                        value: '$12,345,678'
+                    },
+                    {
+                        name: 'Spent on style & entertainment',
+                        type: 'info',
+                        value: '$123,456'
+                    },
+                    {
+                        name: 'Spent on property & utilities',
+                        type: 'info',
+                        value: '$123,456,789'
+                    },
+                    {
+                        name: 'Spent on Job & Activity entry fees',
+                        type: 'info',
+                        value: '$12,345'
+                    },
+                    {
+                        name: 'Spent on contact services',
+                        type: 'info',
+                        value: '$1,234'
+                    },
+                    {
+                        name: 'Spent on health care & bail',
+                        type: 'info',
+                        value: '$123'
+                    },
+                    {
+                        name: 'Dropped or stolen',
+                        type: 'info',
+                        value: '$12,345'
+                    },
+                    {
+                        name: 'Given to others',
+                        type: 'info',
+                        value: '$0'
+                    },
+                    {
+                        name: 'Job cash shared with others',
+                        type: 'info',
+                        value: '$0'
+                    },
+                    {
+                        name: 'Earned from Jobs',
+                        type: 'info',
+                        value: '$123,456,789'
+                    },
+                    {
+                        name: 'Earned from selling vehicles',
+                        type: 'info',
+                        value: '$10'
+                    },
+                    {
+                        name: 'Earned from betting',
+                        type: 'info',
+                        value: '$123,000'
+                    },
+                    {
+                        name: 'Earned from Good Sport reward',
+                        type: 'info',
+                        value: '$90,000'
+                    }
+                ]
             },
             {
-                name: 'Combat'
+                name: 'Combat',
+                items: [
+                    {
+                        name: 'Shots',
+                        type: 'info',
+                        value: '123,456'
+                    },
+                    {
+                        name: 'Hits',
+                        type: 'info',
+                        value: '12,345'
+                    },
+                    {
+                        name: 'Accuracy',
+                        type: 'info',
+                        value: '66.67%'
+                    },
+                    {
+                        name: 'Kills',
+                        type: 'info',
+                        value: '12,345'
+                    },
+                    {
+                        name: 'Headshot kills',
+                        type: 'info',
+                        value: '4,567'
+                    },
+                    {
+                        name: 'Armed kills',
+                        type: 'info',
+                        value: '6,789'
+                    },
+                    {
+                        name: 'Free Aim kills',
+                        type: 'info',
+                        value: '1,234'
+                    },
+                    {
+                        name: 'Stealth kills',
+                        type: 'info',
+                        value: '123'
+                    },
+                    {
+                        name: 'Counter attacks',
+                        type: 'info',
+                        value: '12'
+                    },
+                    {
+                        name: 'Player kills',
+                        type: 'info',
+                        value: '1,234'
+                    },
+                    {
+                        name: 'Player headshot kills',
+                        type: 'info',
+                        value: '123'
+                    },
+                    {
+                        name: 'Survival kills',
+                        type: 'info',
+                        value: '12'
+                    },
+                    {
+                        name: 'Gang Attack kills',
+                        type: 'info',
+                        value: '1,234'
+                    },
+                    {
+                        name: 'Highest killstreak in Deathmatch',
+                        type: 'info',
+                        value: '12'
+                    }
+                ]
             }
         ]
     }
