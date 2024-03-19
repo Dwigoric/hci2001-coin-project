@@ -1,5 +1,11 @@
-import styles from './Intro.module.css'
+// Package imports
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+// Stylesheets
+import styles from './Intro.module.css'
+
+// Utils
 import logger from '../../util/logger.js'
 
 function requestFullScreen() {
@@ -13,6 +19,7 @@ function requestFullScreen() {
 
 function Intro() {
     const navigate = useNavigate()
+    const [isGamer, setIsGamer] = useState(false)
 
     return (
         <div className={styles.introPage}>
@@ -51,12 +58,17 @@ function Intro() {
                     </li>
                     <li>
                         If you have played GTA V before, <a
-                        onClick={() => logger.setGamer()}
+                        onClick={() => {
+                            logger.setGamer()
+                            setIsGamer(true)
+                        }}
                         style={{
                             cursor: 'pointer',
                             textDecoration: 'underline'
                         }}
-                    >click here</a>.
+                    >click here</a>.{
+                        isGamer ? <p>You have classified yourself as a gamer. If not, please reload the page.</p> : ''
+                    }
                     </li>
                 </ol>
             </p>
