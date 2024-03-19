@@ -38,6 +38,9 @@ function Intro() {
                     We will be asking you to perform a series of tasks on simulated
                     interfaces of the GTA V settings menu.
                 </p>
+                <p>
+                    Please accomplish the tasks as fast as you can.
+                </p>
             </div>
             <p className={styles.prerequisites}>
                 <h4>
@@ -57,7 +60,7 @@ function Intro() {
                     >You are using your browser in full screen.
                     </li>
                     <li>
-                        If you have played GTA V before, <a
+                        If you consider yourself a gamer, <a
                         onClick={() => {
                             logger.setGamer()
                             setIsGamer(true)
@@ -72,6 +75,21 @@ function Intro() {
                     </li>
                 </ol>
             </p>
+            <div>
+                <strong>Disclaimer</strong>
+                <p>
+                    If you have a question about understanding the tasks, please ask the researcher
+                    who reached out to you.
+                </p>
+                <p>
+                    Afterward, please redo all tasks from the beginning, as the time it took you to
+                    ask the question will affect the results.
+                </p>
+                <p>
+                    No questions will be entertained regarding finding the buttons or the
+                    interface as this is part of the research.
+                </p>
+            </div>
             <div>
                 If you are ready to proceed, ask the researcher which task you are going to do.
                 Click the appropriate button below to begin.
