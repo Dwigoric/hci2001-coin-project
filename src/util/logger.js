@@ -1,5 +1,3 @@
-window.addEventListener('mousemove', updateMousePosition)
-
 class Logger {
     constructor() {
         this.logs = []
@@ -50,8 +48,8 @@ class Logger {
 
 const logger = new Logger()
 
-function updateMousePosition(event) {
+window.addEventListener('mousemove', (event) => {
     logger.coordinates = { x: event.clientX, y: event.clientY }
-}
+})
 
 export default logger
