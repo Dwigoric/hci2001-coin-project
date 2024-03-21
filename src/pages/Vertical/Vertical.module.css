@@ -28,6 +28,7 @@
     height: 100%;
     
     display: flex;
+    align-items: start;
     gap: 23px;
 }
 
@@ -60,7 +61,7 @@
     background-color: var(--bg-color-dark);
 
     width: auto;
-    height: 100%;
+    height: auto;
 
     flex-grow: 1;
 }
